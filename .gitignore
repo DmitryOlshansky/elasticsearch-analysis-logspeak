@@ -1,0 +1,40 @@
+
+# intellij files
+.idea/
+*.iml
+*.ipr
+*.iws
+build-idea/
+
+# eclipse files
+.project
+.classpath
+.settings
+build-eclipse/
+
+# netbeans files
+nb-configuration.xml
+nbactions.xml
+
+# gradle stuff
+.gradle/
+build/
+target/
+
+# testing stuff
+**/.local*
+.vagrant/
+
+# osx stuff
+.DS_Store
+
+# needed in case docs build is run...maybe we can configure doc build to generate files under build?
+html_docs
+
+# random old stuff that we should look at the necessity of...
+/tmp/
+backwards/
+eclipse-build
+
+
+*~
