@@ -261,7 +261,6 @@ class BitNfaConstants {
     };
     static final short maxInput = 0x1000;
     static final short startMask = 0x4449;
-    static final short finishMask = 0x2224;
-    static final short breakMask = 0x2024;
     static final short leftMask = 0x204;
+    static final short rightMask = 0x2020;
 }

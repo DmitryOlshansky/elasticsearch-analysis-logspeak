@@ -37,6 +37,9 @@ apply plugin: "me.champeau.gradle.jmh"
 
 version = '6.7.0-SNAPSHOT'
 
+licenseFile = rootProject.file('LICENSE.txt')
+noticeFile = rootProject.file('NOTICE.txt')
+
 esplugin {
     description 'Fast tokenizer for typical english/russian logfiles for ElasticSearch.'
     classname 'ru.tinkoff.elasticsearch.plugin.analysis.AnalysisLogspeakPlugin'
@@ -46,10 +49,11 @@ esplugin {
 esplugin.version = version
 
 jmh {
-    profilers = ["perfasm"]
+    //profilers = ["perfasm"]
     jvmArgs = ["-Xbatch",
                "-XX:-TieredCompilation",
                "-XX:+UnlockDiagnosticVMOptions",
+               //"-XX:+PrintAssembly",
                "-XX:PrintAssemblyOptions=intel"]
 }
 /*
@@ -72,8 +76,4 @@ subprojects {
 // TODO: temporary workaround until it's fixed in elasticsearch
 thirdPartyAudit.enabled = false
 dependencyLicenses.enabled = false
-
-licenseFile = rootProject.file('LICENSE.txt')
-noticeFile = rootProject.file('NOTICE.txt')
-
 

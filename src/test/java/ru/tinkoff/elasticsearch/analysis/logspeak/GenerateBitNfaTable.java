@@ -59,25 +59,25 @@ public class GenerateBitNfaTable {
     final static CharPattern alnum = new Alnum();
     final static CharPattern join = new Joiner();
     final static CharPattern wsOrJoin = new NotAlnum();
-    final static CharPattern useLast = new UseLast();
-    final static CharPattern useFirst = new UseFirst();
+    final static CharPattern right = new UseLast();
+    final static CharPattern left = new UseFirst();
 
     public static String generateSource(CharPattern[] stateMachine) {
         short[] bitNFA = new short[0x1000];
         int startMask = 1;
         int finishMask = 0;
-        int breakMask = 0; // break after first or after last
-        int leftMask = 0; // left or right break
-        boolean left = true;
+        int leftMask = 0; // left mask
+        int rightMask = 0;
         for (int i=0; i<stateMachine.length; i++) {
             stateMachine[i].apply(i, bitNFA);
-            if (stateMachine[i] == useFirst || stateMachine[i] == useLast) {
+            if (stateMachine[i] == left) {
                 startMask |= 1<<(i+1);
-                finishMask |= 1<<i;
-                if (left) leftMask |= 1<<i;
-                left = !left;
+                leftMask |= 1<<i;
             }
-            if (stateMachine[i] == useFirst) breakMask |= 1<<i;
+            if (stateMachine[i] == right) {
+                startMask |= 1<<(i+1);
+                rightMask |= 1<<i;
+            }
         }
         StringBuilder result = new StringBuilder();
         result.append("class BitNfaConstants { \n");
@@ -91,9 +91,8 @@ public class GenerateBitNfaTable {
         result.append("\n};\n");
         result.append(String.format("static final short maxInput = 0x%x;\n", bitNFA.length));
         result.append(String.format("static final short startMask = 0x%x;\n", startMask));
-        result.append(String.format("static final short finishMask = 0x%x;\n", finishMask));
-        result.append(String.format("static final short breakMask = 0x%x;\n", breakMask));
         result.append(String.format("static final short leftMask = 0x%x;\n", leftMask));
+        result.append(String.format("static final short rightMask = 0x%x;\n", rightMask));
         result.append("}\n");
         return result.toString();
     }
@@ -109,21 +108,21 @@ public class GenerateBitNfaTable {
         CharPattern[] stateMachine = {
                 ws,
                 alnum,
-                useFirst,
+                left,
 
                 alnum,
                 ws,
-                useFirst,
+                right,
 
                 wsOrJoin,
                 join,
                 alnum,
-                useLast,
+                left,
 
                 alnum,
                 join,
                 wsOrJoin,
-                useFirst
+                right
         };
 
         System.out.println(generateSource(stateMachine));

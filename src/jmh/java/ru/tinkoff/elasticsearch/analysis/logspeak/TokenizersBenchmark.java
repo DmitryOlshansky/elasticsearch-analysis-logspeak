@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode({Mode.Throughput})
 @OutputTimeUnit(TimeUnit.SECONDS)
-@Warmup(iterations = 1, time = 5, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 1, time = 10, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 3, time = 15, timeUnit = TimeUnit.SECONDS)
 @Fork(1)
 @State(Scope.Benchmark)
 public class TokenizersBenchmark {
@@ -21,9 +21,11 @@ public class TokenizersBenchmark {
     @Param({"logspeak", "standard"})
     String tokenizer;
 
-    String string = "Bigbrownfoxjumpsover alazydog";
+    String string = "Big brown fox jumps over a lazy dog";
 
     Tokenizer tk;
+
+    CharTermAttribute term;
 
     char[] source;
 
@@ -38,11 +40,11 @@ public class TokenizersBenchmark {
                 break;
         }
         source = string.toCharArray();
+        term = tk.getAttribute(CharTermAttribute.class);
     }
 
     @Benchmark
     public int tokenize() throws IOException {
-        CharTermAttribute term = tk.getAttribute(CharTermAttribute.class);
         Reader reader = new CharArrayReader(source);
         tk.setReader(reader);
         tk.reset();
