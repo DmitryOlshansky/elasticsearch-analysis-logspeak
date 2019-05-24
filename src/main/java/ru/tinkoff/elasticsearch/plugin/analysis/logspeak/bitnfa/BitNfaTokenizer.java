@@ -1,12 +1,11 @@
-package ru.tinkoff.elasticsearch.analysis.logspeak.bitnfa;
+package ru.tinkoff.elasticsearch.plugin.analysis.logspeak.bitnfa;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-import static ru.tinkoff.elasticsearch.analysis.logspeak.bitnfa.BitNfaConstants.*;
+import static ru.tinkoff.elasticsearch.plugin.analysis.logspeak.bitnfa.BitNfaConstants.*;
 
 public final class BitNfaTokenizer {
     private Reader reader;

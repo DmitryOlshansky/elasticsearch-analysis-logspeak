@@ -1,4 +1,4 @@
-package ru.tinkoff.elasticsearch.analysis.logspeak;
+package ru.tinkoff.elasticsearch.plugin.analysis.logspeak;
 
 import org.apache.lucene.analysis.Tokenizer;
 import org.elasticsearch.common.settings.Settings;

@@ -26,7 +26,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:6.7.0"
+        classpath "org.elasticsearch.gradle:build-tools:6.7.1"
         classpath "me.champeau.gradle:jmh-gradle-plugin:0.4.8"
     }
 }
@@ -35,14 +35,11 @@ apply plugin: 'elasticsearch.esplugin'
 apply plugin: "me.champeau.gradle.jmh"
 //apply plugin: 'maven-publish'
 
-version = '6.7.0-SNAPSHOT'
-
-licenseFile = rootProject.file('LICENSE.txt')
-noticeFile = rootProject.file('NOTICE.txt')
+version = '6.7.1-SNAPSHOT'
 
 esplugin {
     description 'Fast tokenizer for typical english/russian logfiles for ElasticSearch.'
-    classname 'ru.tinkoff.elasticsearch.plugin.analysis.AnalysisLogspeakPlugin'
+    classname 'ru.tinkoff.elasticsearch.plugin.analysis.logspeak.AnalysisLogspeakPlugin'
     name 'analysis-logspeak'
 }
 
@@ -77,3 +74,5 @@ subprojects {
 thirdPartyAudit.enabled = false
 dependencyLicenses.enabled = false
 
+licenseFile = rootProject.file('LICENSE.txt')
+noticeFile = rootProject.file('NOTICE.txt')

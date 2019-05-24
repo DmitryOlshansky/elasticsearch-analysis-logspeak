@@ -1,4 +1,4 @@
-package ru.tinkoff.elasticsearch.analysis.logspeak;
+package ru.tinkoff.elasticsearch.plugin.analysis.logspeak;
 
 public class GenerateBitNfaTable {
     static class CharPattern {

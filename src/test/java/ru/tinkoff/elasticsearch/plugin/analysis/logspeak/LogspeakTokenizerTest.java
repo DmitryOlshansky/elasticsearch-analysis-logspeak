@@ -1,8 +1,7 @@
-package ru.tinkoff.elasticsearch.analysis.logspeak;
+package ru.tinkoff.elasticsearch.plugin.analysis.logspeak;
 
 import junit.framework.TestCase;
 import org.apache.lucene.analysis.Tokenizer;
-import org.apache.lucene.analysis.standard.StandardTokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
 import java.io.*;

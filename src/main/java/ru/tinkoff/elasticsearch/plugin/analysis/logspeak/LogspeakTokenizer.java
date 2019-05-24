@@ -1,13 +1,12 @@
-package ru.tinkoff.elasticsearch.analysis.logspeak;
+package ru.tinkoff.elasticsearch.plugin.analysis.logspeak;
 
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.util.AttributeFactory;
-import ru.tinkoff.elasticsearch.analysis.logspeak.bitnfa.BitNfaTokenizer;
+import ru.tinkoff.elasticsearch.plugin.analysis.logspeak.bitnfa.BitNfaTokenizer;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public final class LogspeakTokenizer extends Tokenizer {
     static final int DEFAULT_MAX_TOKEN_LENGTH = 255;

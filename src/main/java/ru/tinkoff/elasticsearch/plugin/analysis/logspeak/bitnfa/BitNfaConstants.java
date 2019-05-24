@@ -1,4 +1,4 @@
-package ru.tinkoff.elasticsearch.analysis.logspeak.bitnfa;
+package ru.tinkoff.elasticsearch.plugin.analysis.logspeak.bitnfa;
 
 class BitNfaConstants {
     static final short[] bitnfa = {
