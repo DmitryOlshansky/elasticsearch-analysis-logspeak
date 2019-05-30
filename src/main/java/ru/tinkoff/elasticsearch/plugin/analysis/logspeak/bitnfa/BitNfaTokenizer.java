@@ -90,7 +90,8 @@ public final class BitNfaTokenizer {
         left = -1;
         while (true) {
             if (i < available) {
-                s = advance(buffer[i], s);
+                char ch = buffer[i];
+                s = advance(ch < maxInput ? ch : ' ', s);
                 int first = s & leftMask;
                 int second = s & rightMask;
                 if (first != 0) {

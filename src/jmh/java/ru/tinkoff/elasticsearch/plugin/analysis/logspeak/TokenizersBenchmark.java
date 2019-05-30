@@ -1,6 +1,7 @@
 package ru.tinkoff.elasticsearch.plugin.analysis.logspeak;
 
 import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.core.LetterTokenizer;
 import org.apache.lucene.analysis.core.WhitespaceTokenizer;
 import org.apache.lucene.analysis.standard.StandardTokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 public class TokenizersBenchmark {
 
-    @Param({"logspeak", "standard", "whitespace"})
+    @Param({ "logspeak", "standard", "simple", "whitespace"})
     String tokenizer;
 
     @Param({
@@ -53,6 +54,9 @@ public class TokenizersBenchmark {
         switch(tokenizer) {
             case "standard":
                 tk = new StandardTokenizer();
+                break;
+            case "simple":
+                tk = new LetterTokenizer();
                 break;
             case "logspeak":
                 tk = new LogspeakTokenizer();
