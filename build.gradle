@@ -26,7 +26,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:6.7.1"
+        classpath "org.elasticsearch.gradle:build-tools:7.0.1"
         classpath "me.champeau.gradle:jmh-gradle-plugin:0.4.8"
     }
 }
@@ -35,7 +35,7 @@ apply plugin: 'elasticsearch.esplugin'
 apply plugin: "me.champeau.gradle.jmh"
 //apply plugin: 'maven-publish'
 
-version = '6.7.1-SNAPSHOT'
+version = '7.0.1'
 
 esplugin {
     description 'Fast tokenizer for typical english/russian logfiles for ElasticSearch.'
@@ -50,7 +50,6 @@ jmh {
     jvmArgs = ["-Xbatch",
                "-XX:-TieredCompilation",
                "-XX:+UnlockDiagnosticVMOptions",
-               //"-XX:+PrintAssembly",
                "-XX:PrintAssemblyOptions=intel"]
 }
 /*
