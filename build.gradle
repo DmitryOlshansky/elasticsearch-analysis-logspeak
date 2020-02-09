@@ -26,7 +26,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "org.elasticsearch.gradle:build-tools:7.0.1"
+        classpath "org.elasticsearch.gradle:build-tools:7.1.1"
         classpath "me.champeau.gradle:jmh-gradle-plugin:0.4.8"
     }
 }
@@ -35,7 +35,7 @@ apply plugin: 'elasticsearch.esplugin'
 apply plugin: "me.champeau.gradle.jmh"
 //apply plugin: 'maven-publish'
 
-version = '7.0.1'
+version = '7.1.1'
 
 esplugin {
     description 'Fast tokenizer for typical english/russian logfiles for ElasticSearch.'
@@ -52,22 +52,6 @@ jmh {
                "-XX:+UnlockDiagnosticVMOptions",
                "-XX:PrintAssemblyOptions=intel"]
 }
-/*
-subprojects {
-    publishing {
-        publications {
-            asJava {
-                groupId 'ru.tinkoff'
-                artifactId 'elasticsearch-analysis-logspeak'
-                from components.java
-                artifact javadocJar
-                artifact sourcesJar
-                artifact bundlePlugin
-            }
-        }
-    }
-}
-*/
 
 // TODO: temporary workaround until it's fixed in elasticsearch
 thirdPartyAudit.enabled = false
