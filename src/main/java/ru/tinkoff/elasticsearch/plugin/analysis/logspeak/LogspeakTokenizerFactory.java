@@ -8,7 +8,7 @@ import org.elasticsearch.index.analysis.AbstractTokenizerFactory;
 public final class LogspeakTokenizerFactory extends AbstractTokenizerFactory {
 
     public LogspeakTokenizerFactory(IndexSettings indexSettings,  Settings settings) {
-        super(indexSettings, settings);
+        super(indexSettings, settings, "logspeak");
     }
 
     @Override
